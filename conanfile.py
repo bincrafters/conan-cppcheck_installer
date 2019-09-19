@@ -6,9 +6,9 @@ class CppCheckConan(ConanFile):
     name = "cppcheck_installer"
     version = "1.88"
     url = "https://github.com/bincrafters/conan-protoc_installer"
-    homepage = "https://github.com/danmar/cppcheck/"
+    homepage = "https://github.com/danmar/cppcheck"
     topics = ("Cpp Check", "static analyzer")
-    author = "mjvk <>"
+    author = "Mark Jan van Kampen (@mjvk)"
     description = ("flatc is a compiler for flatbuffers schema files. It can "
                    "generate among others C++, Java and Python code.")
     license = "BSD-3-Clause"
@@ -16,9 +16,14 @@ class CppCheckConan(ConanFile):
     exports_sources = ["CMakeLists.txt"]
     generators = "cmake"
     settings = "compiler", "arch", "os_build", "arch_build"
-    #short_paths = True
-    _source_subfolder = "source_subfolder"
-    _build_subfolder = "build_subfolder"
+
+    @property
+    def _source_subfolder(self):
+        return "source_subfolder"
+
+    @property
+    def _build_subfolder(self):
+        return "build_subfolder"
 
     def source(self):
         sha256 = "4aace0420d6aaa900b84b3329c5173c2294e251d2e24d8cba6e38254333dde3f"
@@ -43,6 +48,7 @@ class CppCheckConan(ConanFile):
         self.copy("*", dst=os.path.join("bin","cfg"), src=os.path.join(self._source_subfolder,"cfg"))
         cmake = self._configure_cmake()
         cmake.install()
+        tools.rmdir(os.path.join(self.package_folder, "share"))
 
     def package_id(self):
         del self.info.settings.compiler
@@ -50,4 +56,6 @@ class CppCheckConan(ConanFile):
         self.info.include_build_settings()
 
     def package_info(self):
-        self.env_info.PATH.append(os.path.join(self.package_folder, "bin"))
+        bin_folder = os.path.join(self.package_folder, "bin")
+        self.output.info("Append %s to environment variable PATH" % bin_folder)
+        self.env_info.PATH.append(bin_folder)
