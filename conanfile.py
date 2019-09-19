@@ -10,7 +10,7 @@ class CppCheckConan(ConanFile):
     topics = ("Cpp Check", "static analyzer")
     author = "Mark Jan van Kampen (@mjvk)"
     description = ("Cppcheck is an analysis tool for C/C++ code.")
-    license = "BSD-3-Clause"
+    license = "GPL-3.0"
     exports = ["LICENSE.txt"]
     exports_sources = ["CMakeLists.txt"]
     generators = "cmake"
