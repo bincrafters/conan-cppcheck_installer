@@ -9,8 +9,7 @@ class CppCheckConan(ConanFile):
     homepage = "https://github.com/danmar/cppcheck"
     topics = ("Cpp Check", "static analyzer")
     author = "Mark Jan van Kampen (@mjvk)"
-    description = ("flatc is a compiler for flatbuffers schema files. It can "
-                   "generate among others C++, Java and Python code.")
+    description = ("Cppcheck is an analysis tool for C/C++ code.")
     license = "BSD-3-Clause"
     exports = ["LICENSE.txt"]
     exports_sources = ["CMakeLists.txt"]
