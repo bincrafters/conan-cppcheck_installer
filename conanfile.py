@@ -44,7 +44,7 @@ class CppCheckConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.copy("LICENSE", dst="licenses", src=self._source_subfolder)
+        self.copy("COPYING", dst="licenses", src=self._source_subfolder)
         self.copy("*", dst=os.path.join("bin","cfg"), src=os.path.join(self._source_subfolder,"cfg"))
         cmake = self._configure_cmake()
         cmake.install()
