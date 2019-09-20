@@ -4,7 +4,7 @@ from conans import ConanFile, CMake, tools
 
 class CppCheckConan(ConanFile):
     name = "cppcheck_installer"
-    version = "1.88"
+    version = "1.89"
     url = "https://github.com/bincrafters/conan-protoc_installer"
     homepage = "https://github.com/danmar/cppcheck"
     topics = ("Cpp Check", "static analyzer")
@@ -25,7 +25,7 @@ class CppCheckConan(ConanFile):
         return "build_subfolder"
 
     def source(self):
-        sha256 = "4aace0420d6aaa900b84b3329c5173c2294e251d2e24d8cba6e38254333dde3f"
+        sha256 = "37452d378825c7bd78116b4d7073df795fa732207d371ad5348287f811755783"
         tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version), sha256=sha256)
         os.rename("cppcheck-%s" % self.version, self._source_subfolder)
 
