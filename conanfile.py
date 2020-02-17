@@ -5,36 +5,25 @@ from conans import ConanFile, CMake, tools
 class CppCheckConan(ConanFile):
     name = "cppcheck_installer"
     version = "1.90"
-    url = "https://github.com/bincrafters/conan-protoc_installer"
+    url = "https://github.com/bincrafters/conan-cppcheck_installer"
     homepage = "https://github.com/danmar/cppcheck"
     topics = ("Cpp Check", "static analyzer")
     author = "Mark Jan van Kampen (@mjvk)"
-    description = ("Cppcheck is an analysis tool for C/C++ code.")
-    license = "GPL-3.0"
-    exports = ["LICENSE.txt"]
+    description = "Cppcheck is an analysis tool for C/C++ code."
+    license = "GPL-3.0-or-later"
     exports_sources = ["CMakeLists.txt"]
     generators = "cmake"
     settings = "compiler", "arch", "os_build", "arch_build"
-
-    @property
-    def _source_subfolder(self):
-        return "source_subfolder"
-
-    @property
-    def _build_subfolder(self):
-        return "build_subfolder"
+    _source_subfolder = "source_subfolder"
+    _build_subfolder = "build_subfolder"
 
     def source(self):
-        sha256 = "c4864d3e09359214efdd503b52e241f4f56ba7ce26f8c11939fd9dcfac1fd105"
-        tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version), sha256=sha256)
-        os.rename("cppcheck-%s" % self.version, self._source_subfolder)
+        tools.get(**self.conan_data["sources"][self.version])
+        extracted_dir = "cppcheck-" + self.version
+        os.rename(extracted_dir, self._source_subfolder)
 
     def _configure_cmake(self):
         cmake = CMake(self)
-        cmake.definitions["FLATBUFFERS_BUILD_TESTS"] = False
-        cmake.definitions["FLATBUFFERS_BUILD_FLATLIB"] = False
-        cmake.definitions["FLATBUFFERS_BUILD_FLATHASH"] = False
-        cmake.definitions["FLATBUFFERS_INSTALL"] = True
         cmake.configure(build_folder=self._build_subfolder)
         return cmake
 

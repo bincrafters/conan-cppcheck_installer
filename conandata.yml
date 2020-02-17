@@ -1,0 +1,4 @@
+sources:
+  "1.90":
+    url: "https://github.com/danmar/cppcheck/archive/1.90.tar.gz"
+    sha256: "c4864d3e09359214efdd503b52e241f4f56ba7ce26f8c11939fd9dcfac1fd105"
