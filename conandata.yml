@@ -2,3 +2,10 @@ sources:
   "1.90":
     url: "https://github.com/danmar/cppcheck/archive/1.90.tar.gz"
     sha256: "c4864d3e09359214efdd503b52e241f4f56ba7ce26f8c11939fd9dcfac1fd105"
+  "2.0":
+    url: "https://github.com/danmar/cppcheck/archive/2.0.tar.gz"
+    sha256: "fdba69d9f8db4bbe27ee00bb88839d212b6a848372add7ad8f567236deb0f00f"
+patches:
+  "2.0":
+    - patch_file: "patches/809a769c690d8ab6fef293e41a29c8490512866e.patch"
+      base_path: "source_subfolder"

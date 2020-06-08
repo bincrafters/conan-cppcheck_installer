@@ -1,0 +1,20 @@
+From 809a769c690d8ab6fef293e41a29c8490512866e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Marjam=C3=A4ki?= <daniel.marjamaki@gmail.com>
+Date: Sun, 10 May 2020 15:38:01 +0200
+Subject: [PATCH] Try to make Travis happy
+
+---
+ cmake/versions.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/versions.cmake b/cmake/versions.cmake
+index 4c6c27fd9d..adf6393cc7 100644
+--- a/cmake/versions.cmake
++++ b/cmake/versions.cmake
+@@ -1,5 +1,5 @@
+ # Version for libraries CPP
+-SET(VERSION "2.0")
++SET(VERSION "2.0.0")
+ STRING(REGEX MATCHALL "[0-9]" VERSION_PARTS "${VERSION}")
+ LIST(GET VERSION_PARTS 0 VERSION_MAJOR)
+ LIST(GET VERSION_PARTS 1 VERSION_MINOR)
